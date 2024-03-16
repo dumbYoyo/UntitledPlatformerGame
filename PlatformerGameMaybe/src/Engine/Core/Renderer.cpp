@@ -92,14 +92,9 @@ void Renderer::Render(entt::registry* reg)
 	auto cameraView = reg->view<TransformComponent, CameraComponent>();
 	for (auto entity : cameraView)
 	{
-		TransformComponent& cameraTransfrom = cameraView.get<TransformComponent>(entity);
+		TransformComponent& cameraTransform = cameraView.get<TransformComponent>(entity);
 		CameraComponent& cameraComponent = cameraView.get<CameraComponent>(entity);
-		cameraComponent.View = glm::mat4(1.0f);
-		cameraComponent.View = glm::rotate(cameraComponent.View, glm::radians(cameraTransfrom.Rotation.x), glm::vec3(1, 0, 0));
-		cameraComponent.View = glm::rotate(cameraComponent.View, glm::radians(cameraTransfrom.Rotation.y), glm::vec3(0, 1, 0));
-		cameraComponent.View = glm::rotate(cameraComponent.View, glm::radians(cameraTransfrom.Rotation.z), glm::vec3(0, 0, 1));
-		cameraComponent.View = glm::translate(cameraComponent.View, cameraTransfrom.Position);
-		m_crntShader->LoadMat4f("view", cameraComponent.View);
+		m_crntShader->LoadMat4f("view", cameraComponent.GenerateAndGetViewMatrix(cameraTransform));
 	}
 
 	Draw(reg);

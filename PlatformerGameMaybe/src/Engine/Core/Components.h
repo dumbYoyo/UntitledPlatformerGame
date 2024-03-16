@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <glad/glad.h>
 #include <iostream>
 #include <stb/stb_image.h>
@@ -19,6 +20,16 @@ struct CameraComponent
 	glm::vec3 LookPosition{ 0, 0, 0 };
 	glm::vec3 Up{ 0, 1, 0 };
 	glm::mat4 View = glm::mat4(1.0f);
+
+	glm::mat4& GenerateAndGetViewMatrix(const TransformComponent& cameraTransform)
+	{
+		View = glm::mat4(1.0f);
+		View = glm::rotate(View, glm::radians(cameraTransform.Rotation.x), glm::vec3(1, 0, 0));
+		View = glm::rotate(View, glm::radians(cameraTransform.Rotation.y), glm::vec3(0, 1, 0));
+		View = glm::rotate(View, glm::radians(cameraTransform.Rotation.z), glm::vec3(0, 0, 1));
+		View = glm::translate(View, cameraTransform.Position);
+		return View;
+	}
 };
 
 class RenderableComponent
@@ -93,8 +104,13 @@ public:
 			std::cout << "ERROR::TEXTURE_LOADING::" << texPath << "\n";
 		}
 	}
-private:
 	unsigned int m_vbo = 0;
+private:
 	unsigned int m_tbo = 0;
 	unsigned int m_ibo = 0;
+};
+
+struct RigidbodyComponent
+{
+	float f;
 };

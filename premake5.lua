@@ -35,7 +35,7 @@ project "PlatformerGameMaybe"
         "%{prj.name}/libraries/glm",
         "%{prj.name}/libraries/stb",
         "%{prj.name}/libraries/entt",
-        "%{prj.name}/libaries/box2d/include"
+        "%{prj.name}/libraries/box2d/include",
     }
 
     libdirs

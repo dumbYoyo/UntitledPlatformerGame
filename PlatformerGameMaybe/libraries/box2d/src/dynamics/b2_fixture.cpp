@@ -206,15 +206,15 @@ void b2Fixture::Refilter()
 		edge = edge->next;
 	}
 
-	b2World* world = m_body->GetWorld();
+	b2World* m_world = m_body->GetWorld();
 
-	if (world == nullptr)
+	if (m_world == nullptr)
 	{
 		return;
 	}
 
 	// Touch each proxy so that new pairs may be created
-	b2BroadPhase* broadPhase = &world->m_contactManager.m_broadPhase;
+	b2BroadPhase* broadPhase = &m_world->m_contactManager.m_broadPhase;
 	for (int32 i = 0; i < m_proxyCount; ++i)
 	{
 		broadPhase->TouchProxy(m_proxies[i].proxyId);
