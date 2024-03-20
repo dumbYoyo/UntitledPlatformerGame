@@ -7,6 +7,7 @@
 #include <stb/stb_image.h>
 #include "KeyListener.h"
 #include "MouseListener.h"
+#include <box2d/box2d.h>
 
 struct TransformComponent
 {
@@ -110,7 +111,18 @@ private:
 	unsigned int m_ibo = 0;
 };
 
+struct BoxColliderComponent
+{
+	float sizeX = 0.5f;
+	float sizeY = 0.5f;
+};
+
 struct RigidbodyComponent
 {
-	float f;
+	b2Body* body;
+};
+
+struct StaticbodyComponent
+{
+	b2Body* body;
 };

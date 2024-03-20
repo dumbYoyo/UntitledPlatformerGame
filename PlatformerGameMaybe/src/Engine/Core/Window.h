@@ -11,7 +11,7 @@ namespace Window {
 	{
 		glfwInit();
 
-		GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello World", 0, 0);
+		GLFWwindow* window = glfwCreateWindow(width, height, title, 0, 0);
 
 		glfwMakeContextCurrent(window);
 		gladLoadGL();
@@ -33,7 +33,8 @@ namespace Window {
 
 	static void Clear()
 	{
-		glEnable(GL_DEPTH_TEST);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
 		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}

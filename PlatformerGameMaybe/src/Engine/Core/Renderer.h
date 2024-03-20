@@ -8,6 +8,7 @@
 #include "Components.h"
 #include "Shader.h"
 #include "Entity.h"
+#include "Globals.h"
 
 class Renderer
 {

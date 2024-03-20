@@ -5,7 +5,7 @@ void Box2dDebugRenderer::Init(entt::registry* reg)
 	m_registry = reg;
 	shader.Init("res/box2dDebugDraw/vertex.glsl", "res/box2dDebugDraw/fragment.glsl");
 
-	glm::mat4 proj = glm::ortho(0.f, 1280.f, 0.f, 720.f, 0.1f, 100.f);
+	glm::mat4 proj = glm::ortho(0.f, BOX2D_RENDERER_VIEWPORT_WIDTH, 0.f, BOX2D_RENDERER_VIEWPORT_HEIGHT, 0.1f, 100.f);
 	shader.Bind();
 	shader.LoadMat4f("proj", proj);
 	shader.Unbind();
@@ -54,7 +54,7 @@ void Box2dDebugRenderer::Render(const b2Vec2* vertices, int32 vertexCount)
 	glEnableVertexAttribArray(0);
 
 	glm::mat4 modelMatrix = glm::mat4(1.0f);
-	modelMatrix = glm::scale(modelMatrix, glm::vec3(100, 100, 100));
+	modelMatrix = glm::scale(modelMatrix, glm::vec3(BOX2D_RENDERER_SCALE_X, BOX2D_RENDERER_SCALE_Y, 1.f));
 	shader.LoadMat4f("model", modelMatrix);
 
 	shader.LoadVec3("objColor", glm::vec3(1, 1, 1));

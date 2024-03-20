@@ -5,7 +5,7 @@ void Renderer::Init()
 	m_entityShader.Init("res/vertex.glsl", "res/fragment.glsl");
 	m_crntShader = &m_entityShader;
 
-	glm::mat4 proj = glm::ortho(0.f, 1280.f, 0.f, 720.f, 0.1f, 100.f);
+	glm::mat4 proj = glm::ortho(0.f, RENDERER_VIEWPORT_WIDTH, 0.f, RENDERER_VIEWPORT_HEIGHT, 0.1f, 100.f);
 	m_entityShader.Bind();
 	m_entityShader.LoadMat4f("proj", proj);
 	m_entityShader.Unbind();

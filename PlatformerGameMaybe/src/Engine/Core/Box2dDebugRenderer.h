@@ -4,6 +4,7 @@
 #include <entt/entt.hpp>
 #include "Shader.h"
 #include "Components.h"
+#include "Globals.h"
 
 class Box2dDebugRenderer
 {

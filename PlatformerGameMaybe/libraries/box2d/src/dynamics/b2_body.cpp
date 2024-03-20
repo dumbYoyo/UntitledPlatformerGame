@@ -28,7 +28,7 @@
 
 #include <new>
 
-b2Body::b2Body(const b2BodyDef* bd, b2World* m_world)
+b2Body::b2Body(const b2BodyDef* bd, b2World* world)
 {
 	b2Assert(bd->position.IsValid());
 	b2Assert(bd->linearVelocity.IsValid());
@@ -60,7 +60,7 @@ b2Body::b2Body(const b2BodyDef* bd, b2World* m_world)
 		m_flags |= e_enabledFlag;
 	}
 
-	m_world = m_world;
+	m_world = world;
 
 	m_xf.p = bd->position;
 	m_xf.q.Set(bd->angle);

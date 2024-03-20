@@ -3,14 +3,13 @@
 #include "Window.h"
 #include "Components.h"
 #include <entt/entt.hpp>
+#include "Globals.h"
 
 class Entity;
 
 class Scene
 {
 public:
-	static const unsigned int WINDOW_WIDTH = 1280, WINDOW_HEIGHT = 720;
-
 	Scene();
 	virtual ~Scene();
 

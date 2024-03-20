@@ -7,6 +7,7 @@
 #include "Engine/Core/Scene.h"
 #include "Engine/Core/Box2dDebugRenderer.h"
 #include "Engine/Core/Box2dDebugDraw.h"
+#include "Engine/Core/Box2dManager.h"
 
 class Game : public Scene
 {
@@ -20,8 +21,8 @@ public:
 private:
 	Renderer m_renderer;
 	Entity m_camera;
-	Box2dDebugDraw* m_box2dDebugDraw;
+
 	b2World* m_world;
-	
-	float GravityAccl = 100.f;
+	Box2dDebugDraw* m_box2dDebugDraw;
+	Box2dManager m_box2dMgr;
 };
