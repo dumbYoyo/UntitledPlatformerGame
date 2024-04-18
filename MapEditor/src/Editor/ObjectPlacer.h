@@ -12,7 +12,10 @@
 class ObjectPlacer
 {
 public:
+	void Init();
 	void Update(entt::registry* reg, Scene* scene, const glm::vec2& camPos);
 private:
 	glm::vec2 ScreenToWorld(float screenX, float screenY, const glm::vec2& camPos);
+	std::string m_crntTexPath;
+	std::string* m_texPaths;
 };

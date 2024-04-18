@@ -2,7 +2,8 @@
 
 Editor::Editor()
 {
-	renderer.Init();
+	m_renderer.Init();
+	m_objPlacer.Init();
 
 	m_camera = CreateEntity();
 	m_camera.AddComponent<CameraComponent>();
@@ -15,7 +16,7 @@ Editor::~Editor()
 
 void Editor::Render()
 {
-	renderer.Render(&m_registry);
+	m_renderer.Render(&m_registry);
 }
 
 void Editor::Update(float dt)
@@ -28,7 +29,7 @@ void Editor::Update(float dt)
 	}
 
 	glm::vec2 camPos(camTrans.Position.x, camTrans.Position.y);
-	objPlacer.Update(&m_registry, this, camPos);
+	m_objPlacer.Update(&m_registry, this, camPos);
 }
 
 void Editor::FixedUpdate(float dt)

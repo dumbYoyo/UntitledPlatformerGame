@@ -16,8 +16,8 @@ public:
 	virtual void Update(float dt) override;
 	virtual void FixedUpdate(float dt) override; 
 private:
-	Renderer renderer;
-	ObjectPlacer objPlacer;
+	Renderer m_renderer;
+	ObjectPlacer m_objPlacer;
 
 	Entity m_camera;
 };

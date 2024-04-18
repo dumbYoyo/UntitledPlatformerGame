@@ -1,8 +1,12 @@
 #include "ObjectPlacer.h"
 
-void Print(const glm::vec2& vec)
+void ObjectPlacer::Init()
 {
-	std::cout << "X: " << vec.x << ", Y: " << vec.y << "\n";
+	m_texPaths = new std::string[2];
+	m_texPaths[0] = "res/OrangeBox.png";
+	m_texPaths[1] = "res/MemeCat.png";
+
+	m_crntTexPath = m_texPaths[0];
 }
 
 void ObjectPlacer::Update(entt::registry* reg, Scene* scene, const glm::vec2& camPos)
@@ -18,7 +22,16 @@ void ObjectPlacer::Update(entt::registry* reg, Scene* scene, const glm::vec2& ca
 
 		Entity entity = { reg->create(), scene };
 		entity.AddComponent<TransformComponent>().Position = glm::vec3(x, y, 0.f);
-		entity.AddComponent<RenderableComponent>();
+		entity.AddComponent<RenderableComponent>().SetTexture(m_crntTexPath);
+	}
+	
+	if (abs(MouseListener::GetScrollY()))
+	{
+		static int i = 0;
+		i++;
+		if (i > 1)
+			i = 0;
+		m_crntTexPath = m_texPaths[i];
 	}
 }
 
