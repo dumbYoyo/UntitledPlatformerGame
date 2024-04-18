@@ -4,6 +4,7 @@
 #include "Engine/Entity.h"
 #include "Engine/Renderer.h"
 #include "Engine/Box2dManager.h"
+#include "Editor/ObjectPlacer.h"
 
 class Editor : public Scene
 {
@@ -15,9 +16,8 @@ public:
 	virtual void Update(float dt) override;
 	virtual void FixedUpdate(float dt) override; 
 private:
-	b2World* m_world;
-
 	Renderer renderer;
+	ObjectPlacer objPlacer;
+
 	Entity m_camera;
-	Box2dManager m_box2dMgr;
 };

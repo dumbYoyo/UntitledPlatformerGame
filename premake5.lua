@@ -86,6 +86,7 @@ project "MapEditor"
         "%{prj.name}/libraries/stb",
         "%{prj.name}/libraries/entt",
         "%{prj.name}/libraries/box2d/include",
+        "%{prj.name}/src"
     }
 
     libdirs
